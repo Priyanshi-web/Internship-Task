@@ -6,6 +6,7 @@ import Contact from './Contact';
 import Home from './Home';
 import Notfound from './Notfound';
 import Product from './Product';
+import Form from './Form';
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
         <Link to="/contact" style={{ color: "#fff", textDecoration: "none" }}>Contact</Link>
         <Link to="/product" style={{ color: "#fff", textDecoration: "none" }}>Product</Link>
         <Link to="/todo" style={{ color: "#fff", textDecoration: "none" }}>TODO List</Link>
+        <Link to="form" style={{ color: "#fff", textDecoration: "none" }}>Form</Link>
       </div>
 
       <Routes>
@@ -31,6 +33,7 @@ const App = () => {
           <Route path=":id" element={<Product />}></Route>
         </Route>
         <Route path='/todo' element={<TodoList/>}></Route>
+        <Route path='/form' element={<Form/>}></Route>
         {/* <Route path='/product/:id' element={<Prod />}></Route> */}
         <Route path='/*' element={<Notfound />}></Route>
       </Routes>
