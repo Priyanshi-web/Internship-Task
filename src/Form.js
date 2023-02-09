@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Info } from "react-feather";
 
 const validateRadioButton = value => {
     if (!value) {
@@ -7,6 +8,18 @@ const validateRadioButton = value => {
     return '';
 };
 
+// to get the data from LS
+
+const getLocalItmes = () => {
+    let list = localStorage.getItem('lists');
+    console.log(list);
+
+    if (list) {
+        return JSON.parse(localStorage.getItem('lists'));
+    } else {
+        return [];
+    }
+}
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
 const Form = () => {
@@ -17,6 +30,7 @@ const Form = () => {
         phone: '',
         add: '',
     });
+
     const [error, setError] = useState(false);
     const [firsterror, setFirsterror] = useState(false);
     const [lasterror, setLasterror] = useState(false);
@@ -24,8 +38,27 @@ const Form = () => {
     const [nerr, setNerr] = useState(false);
     const [aerr, setAerr] = useState(false);
 
+    const [inputarr, setInputarr] = useState([getLocalItmes()]);
+
+    const [isEditItem, setIsEditItem] = useState();
+
+    const [toggleSubmit, setToggleSubmit] = useState(true);
+
     const [isValid, setIsValid] = useState(false);
 
+    const editItem = (id) => {
+        let newEditItem = fullName.find((elem) => {
+            return elem.id === id
+        });
+        console.log(newEditItem);
+
+        setToggleSubmit(false);
+
+        setInputarr(newEditItem.name);
+
+        setIsEditItem(id);
+
+    }
 
     // for particular one field 
     // const [touched, setTouched] = useState(false);
@@ -45,6 +78,19 @@ const Form = () => {
 
     // };
 
+    // const handleEdit=(i)=>{
+    //     setFullName(inputarr[i])
+    //     //setShow(true)
+    //     setIsEditItem(i)
+    // }
+
+    // const handleUpdate=()=>{
+    //     inputarr.splice(isEditItem,1,fullName)
+    //     setInputarr([...inputarr])
+    //     //setShow(false)
+    //     setFullName("")
+    // }
+
     const handleBlur = (e) => {
         if (fullName.fname.length === 0) {
             setFirsterror(true)
@@ -54,7 +100,7 @@ const Form = () => {
             setEerr(true)
         } else if (fullName.phone.length == 0 || fullName.phone.length > 10) {
             setNerr(true)
-        } else if (fullName.add.length == 0 ) {
+        } else if (fullName.add.length == 0) {
             setAerr(true)
         } else {
             setFirsterror(false)
@@ -63,9 +109,8 @@ const Form = () => {
             setNerr(false)
             setAerr(false)
         }
-        
-    }
 
+    }
 
     const [formData, setformData] = useState({
         isAgree: false,
@@ -97,7 +142,18 @@ const Form = () => {
 
         });
 
+
+        setInputarr([...inputarr, { [name]: value }])
+        console.log(inputarr)
+
     };
+
+    const handleSubmit = (e) => {
+        if (fullName.fname.length !== 0 || fullName.lname.length !== 0 || fullName.email.length !== 0 || fullName.phone.length !== 0 || fullName.add.length !== 0) {
+            setInputarr(newData => [...newData, fullName])
+            setFullName({ fname: "", lname: "", email: "", phone: "", add: "" });
+        }
+    }
 
     const onSubmit = (event) => {
         event.preventDefault();
@@ -131,6 +187,10 @@ const Form = () => {
 
     }
 
+    useEffect(() => {
+        localStorage.setItem('lists', JSON.stringify(inputarr))
+    }, [inputarr]);
+
     return (
         <>
             <div className="main my-5">
@@ -138,12 +198,12 @@ const Form = () => {
                 <div className="container">
                     <form onSubmit={onSubmit}>
                         <div>
-                            <h1>
-                                Hello {fullName.fname}{fullName.lname}
+                            {/* <h1>
+                                Hello {fullName.fname} {fullName.lname}
                             </h1>
                             <p>{fullName.email}</p>
                             <p>{fullName.phone}</p>
-                            <p>{fullName.qua}</p>
+                            <p>{fullName.qua}</p> */}
 
                             <div className="text-center my-3">
                                 <input type="text"
@@ -176,7 +236,7 @@ const Form = () => {
                                     className="col-8"
                                 />
                                 <br />
-                                {   lasterror && fullName.lname.length <= 0 ?
+                                {lasterror && fullName.lname.length <= 0 ?
                                     <label style={{ color: "red" }}>Last Name is required</label> :
                                     error && fullName.lname.length <= 0 ?
                                         <label style={{ color: "red" }}>Please Enter Your Last Name</label> : ""}
@@ -199,7 +259,7 @@ const Form = () => {
                                 ) : (
                                     <p>Invalid Email</p>
                                 )}
-                                {   eerr && fullName.email.length <= 0 ?
+                                {eerr && fullName.email.length <= 0 ?
                                     <label style={{ color: "red" }}>Email is required</label> :
                                     error && fullName.email.length <= 0 ?
                                         <label style={{ color: "red" }}>Please Enter Your Email</label> : ""}
@@ -241,16 +301,16 @@ const Form = () => {
                                     className="col-8"
                                 />
                                 <br />
-                                    
-                                {   nerr && fullName.phone.length > 10 ?
+
+                                {nerr && fullName.phone.length > 10 ?
                                     <label style={{ color: "red" }}>Invalid Mobile Number</label> :
                                     nerr && fullName.phone.length <= 0 ?
-                                    <label style={{ color: "red" }}>Mobile Number is required</label> :
-                                    error && fullName.phone.length <= 0 ?
-                                        <label style={{ color: "red" }}>Please Enter Your Mobile Number</label> : ""}
+                                        <label style={{ color: "red" }}>Mobile Number is required</label> :
+                                        error && fullName.phone.length <= 0 ?
+                                            <label style={{ color: "red" }}>Please Enter Your Mobile Number</label> : ""}
                             </div>
 
-                            <div className="text-center my-3">  
+                            <div className="text-center my-3">
                                 <input type="text"
                                     placeholder="Enter your address"
                                     name="add"
@@ -261,7 +321,7 @@ const Form = () => {
                                     className="col-8"
                                 />
                                 <br />
-                                {   aerr && fullName.add.length <= 0 ?
+                                {aerr && fullName.add.length <= 0 ?
                                     <label style={{ color: "red" }}>Address is required</label> :
                                     error && fullName.add.length <= 0 ?
                                         <label style={{ color: "red" }}>Please Enter Your Address</label> : ""}
@@ -280,10 +340,32 @@ const Form = () => {
                             </div>
 
                             <div className="text-center">
-                                <button type="submit" style={{ color: "white", backgroundColor: "green", border: "none", borderRadius: "10px", padding: "10px" }}>Submit</button>
+                                <button onClick={handleSubmit} type="submit" style={{ color: "white", backgroundColor: "green", border: "none", borderRadius: "10px", padding: "10px" }}>Submit</button>
                             </div>
                         </div>
                     </form>
+                    <div>
+                        {
+                            inputarr.map(
+                                (Info, ind) => {
+                                    return (
+                                        <div key={ind}>
+                                            <p>{Info.fname}</p>
+                                            <p>{Info.lname}</p>
+                                            <p>{Info.email}</p>
+                                            <p>{formData.gender}</p>
+                                            <p>{Info.phone}</p>
+                                            <p>{Info.add}</p>
+                                            <p>{formData.isAgree ? "Yes" : "No"}</p>
+                                            <div className="todo-btn" style={{ padding: "5px" }}>
+                                                <button style={{ backgroundColor: "#000", color: "#fff", textAlign: "center" }}><i className="fa fa-pencil-square-o" aria-hidden="true" title="Edit Item" onClick={() => editItem(Info.id)}></i></button>
+                                            </div>
+                                        </div>
+                                    )
+                                }
+                            )
+                        }
+                    </div>
                 </div>
             </div>
         </>

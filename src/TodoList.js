@@ -94,17 +94,18 @@ const TodoList = () => {
         <>
             <div className="main-div" style={{ textAlign: "center", backgroundColor: "#D7E5F4", display: "flex", justifyContent: "center", padding: "50px 0 ", height: "42rem" }}>
                 <div className="child-div">
-                    <div>
+                    <div style={{margin:"40px 0"}}>
                         <h1>Todo List</h1>
                     </div>
 
                     <div className="addItems">
                         <input style={{borderRadius:"10px",textAlign:"center"}}
                             type="text" placeholder="Add Items"
-                            value={inputData}
+                            value={inputData.lname}
                             onChange={(e) => setInputData(e.target.value)
                             }
                         />
+                        
                         {
                             toggleSubmit ? <button style={{backgroundColor:"#000",color:"#fff",borderRadius:"50%",width:"50px",height:"30px"}}><i className="fa fa-plus "  title="Add Item" onClick={addItem}></i></button> :
                                 <button style={{backgroundColor:"#000",color:"#fff",borderRadius:"50%",width:"50px",height:"30px"}}><i className="fa fa-pencil" title="Update Item" onClick={addItem}></i></button>
