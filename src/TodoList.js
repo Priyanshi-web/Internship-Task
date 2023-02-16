@@ -38,11 +38,14 @@ const TodoList = () => {
 
             setInputData('');
 
+            
+
             setIsEditItem(null);
         } else {
             const allInputData = { id: new Date().getTime().toString(), name: inputData }
             setItems([...items, allInputData]);
             setInputData('')
+            
         }
     }
 
@@ -99,16 +102,17 @@ const TodoList = () => {
                     </div>
 
                     <div className="addItems">
-                        <input style={{borderRadius:"10px",textAlign:"center"}}
-                            type="text" placeholder="Add Items"
+                        <input 
+                            style={{borderRadius:"10px",textAlign:"center"}}
+                            type="text" 
+                            placeholder="Add Items"
                             value={inputData.lname}
-                            onChange={(e) => setInputData(e.target.value)
-                            }
+                            onChange={(e) => setInputData(e.target.value)}
                         />
                         
                         {
-                            toggleSubmit ? <button style={{backgroundColor:"#000",color:"#fff",borderRadius:"50%",width:"50px",height:"30px"}}><i className="fa fa-plus "  title="Add Item" onClick={addItem}></i></button> :
-                                <button style={{backgroundColor:"#000",color:"#fff",borderRadius:"50%",width:"50px",height:"30px"}}><i className="fa fa-pencil" title="Update Item" onClick={addItem}></i></button>
+                            toggleSubmit ? <button style={{backgroundColor:"#000",color:"#fff",borderRadius:"50%",width:"50px",height:"30px"}} onClick={addItem}><i className="fa fa-plus "  title="Add Item" ></i></button> :
+                                <button style={{backgroundColor:"#000",color:"#fff",borderRadius:"50%",width:"50px",height:"30px"}} onClick={addItem}><i className="fa fa-pencil" title="Update Item" onClick={addItem}></i></button>
 
                         }
 
@@ -122,8 +126,8 @@ const TodoList = () => {
                                     <div className="eachItem" key={elem.id} style={{backgroundColor:"#000",display:"flex",justifyContent:"space-between",borderRadius:"5px",margin:"10px 0 5px"}}>
                                         <h3 style={{color:"#fff",padding:"5px"}}>{elem.name}</h3>
                                         <div className="todo-btn" style={{padding:"5px"}}>
-                                            <button style={{backgroundColor:"#000",color:"#fff",textAlign:"center"}}><i className="fa fa-pencil-square-o" aria-hidden="true" title="Edit Item" onClick={() => editItem(elem.id)}></i></button>
-                                            <button style={{backgroundColor:"#000",color:"#fff",textAlign:"center"}}><i className="fa fa-trash-o" title="Delete Item" onClick={() => deleteItem(elem.id)}></i></button>
+                                            <button style={{backgroundColor:"#000",color:"#fff",textAlign:"center"}} onClick={() => editItem(elem.id)}><i className="fa fa-pencil-square-o" aria-hidden="true" title="Edit Item" ></i></button>
+                                            <button style={{backgroundColor:"#000",color:"#fff",textAlign:"center"}} onClick={() => deleteItem(elem.id)}><i className="fa fa-trash-o" title="Delete Item" ></i></button>
                                         </div>
                                     </div>
                                 )

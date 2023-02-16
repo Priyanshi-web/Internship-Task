@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 
+
 const Contact = () => {
 
   const { id } = useParams();
+
 
   return (
     <>
@@ -11,7 +13,7 @@ const Contact = () => {
       <div style={{ textAlign: "center" }}>
         <Link to="/Contact/1">Contact 1</Link><br/>
         <Link to="/Contact/2">Contact 2</Link><br/>
-        <h1>Contact {id} </h1>
+        <h1>Contact {id} </h1>        
       </div>
     </>
   );

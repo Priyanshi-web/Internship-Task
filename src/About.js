@@ -42,7 +42,7 @@ const About = () => {
   //for checkbox and radio button
   const [formData, setformData] = useState({
     isAgree: false,
-    gender: ""
+    gender: "male"
   })
 
   //radio button
@@ -94,11 +94,7 @@ const About = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // const newRecord = { ...userRegistration, id: new Date().getTime().toString() }
-
-    // setRecords([...records, newRecord]);
-    // console.log(records);
-
+    
     if (userRegistration) {
       setRecords(
         records.map((elem) => {
@@ -392,4 +388,3 @@ const About = () => {
 };
 
 export default About;
-

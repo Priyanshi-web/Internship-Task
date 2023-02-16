@@ -7,18 +7,21 @@ import Home from './Home';
 import Notfound from './Notfound';
 import Product from './Product';
 import Form from './Form';
+import Task from './Task';
+// import Usereducer from './Usereducer';
 
 
 const App = () => {
   return (
     <>
       <div style={{ display: "flex", justifyContent: "space-between", background: "#000", padding: "20px" }}>
-        <Link to="/" style={{ color: "#fff", textDecoration: "none" }}>Home</Link>
-        <Link to="/about" style={{ color: "#fff", textDecoration: "none" }}>About</Link>
-        <Link to="/contact" style={{ color: "#fff", textDecoration: "none" }}>Contact</Link>
-        <Link to="/product" style={{ color: "#fff", textDecoration: "none" }}>Product</Link>
-        <Link to="/todo" style={{ color: "#fff", textDecoration: "none" }}>TODO List</Link>
-        <Link to="form" style={{ color: "#fff", textDecoration: "none" }}>Form</Link>
+        <Link to="/" style={{ color: "#fff", textDecoration: "none" }}><span style={{padding:"10px"}}>Home</span></Link>
+        <Link to="/about" style={{ color: "#fff", textDecoration: "none" }}><span style={{padding:"10px"}}>About</span></Link>
+        <Link to="/contact" style={{ color: "#fff", textDecoration: "none" }}><span style={{padding:"10px"}}>Contact</span></Link>
+        <Link to="/product" style={{ color: "#fff", textDecoration: "none" }}><span style={{padding:"10px"}}>Product</span></Link>
+        <Link to="/todo" style={{ color: "#fff", textDecoration: "none" }}><span style={{padding:"10px"}}>TODO List</span></Link>
+        <Link to="/form" style={{ color: "#fff", textDecoration: "none" }}><span style={{padding:"10px"}}>Form</span></Link>
+        <Link to="/task" style={{ color: "#fff", textDecoration: "none" }}><span style={{padding:"10px"}}>Task</span></Link>
       </div>
 
       <Routes>
@@ -34,6 +37,9 @@ const App = () => {
         </Route>
         <Route path='/todo' element={<TodoList/>}></Route>
         <Route path='/form' element={<Form/>}></Route>
+        <Route path='/task' element={<Task/>}>
+          {/* <Route path='usereducer' element={<Usereducer/>}></Route> */}
+        </Route>
         {/* <Route path='/product/:id' element={<Prod />}></Route> */}
         <Route path='/*' element={<Notfound />}></Route>
       </Routes>
