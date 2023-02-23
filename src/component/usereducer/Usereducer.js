@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, useState } from "react";
-import A from "./A";
+import A from "../usecontext/A";
 
 const EditData = createContext();
 

@@ -1,5 +1,5 @@
 import React , { useContext } from 'react'
-import { EditData } from './Usereducer'
+import { EditData } from '../usereducer/Usereducer'
 
 const C = () => {
     const editdata = useContext(EditData)

@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
-import About from './About';
-import TodoList from './TodoList';
-import Contact from './Contact';
-import Home from './Home';
-import Notfound from './Notfound';
-import Product from './Product';
-import Form from './Form';
-import Task from './Task';
-import Reactform from './Reactform';
+import About from './component/About';
+import TodoList from './component/TodoList';
+import Contact from './component/Contact';
+import Home from './component/Home';
+import Notfound from './component/Notfound';
+import Product from './component/Product';
+import Form from './component/Form';
+import Task from './component/Task';
+import Reactform from './component/useForm/Reactform';
 // import Usereducer from './Usereducer';
+import EditData from './component/Editdataform/Editdata';
 
 
 const App = () => {
@@ -42,6 +43,7 @@ const App = () => {
           <Route path=':id' element={<Task/>}></Route>
         </Route>
         <Route path='/reactform' element={<Reactform/>}></Route>
+        <Route path='/editdata' element={<EditData/>}></Route>
         {/* <Route path='/product/:id' element={<Prod />}></Route> */}
         <Route path='/*' element={<Notfound />}></Route>
       </Routes>

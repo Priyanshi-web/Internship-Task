@@ -1,6 +1,4 @@
-import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { useState } from 'react';
+import React,{ useState } from 'react';
 
 const validateRadioButton = value => {
   if (!value) {
@@ -12,9 +10,7 @@ const validateRadioButton = value => {
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
 
-const About = () => {
-
-  const { id } = useParams()
+const EditData = () => {
 
   //to add the data
   const [userRegistration, setUserRegistration] = useState({
@@ -191,21 +187,11 @@ const About = () => {
 
   return (
     <>
-
-      <h1 style={{ textAlign: "center" }}>About</h1>
-
-      <div style={{ textAlign: "center" }}>
-        <Link to="/About/1">User 1</Link><br />
-        <Link to="/About/2">User 2</Link><br />
-        <h1>user {id}</h1>
-      </div>
-
-
       {isedit ?
 
         <form onSubmit={handleSubmit}>
           <div className="text-center">
-            <button type="submit" style={{ color: "white", backgroundColor: "green", border: "none", borderRadius: "10px", padding: "10px" }} onClick={onedit}>Update</button>
+            <button type="submit" className='mt-5' style={{ color: "white", backgroundColor: "green", border: "none", borderRadius: "10px", padding: "10px" }} onClick={onedit}>Update</button>
           </div>
 
           <div className="text-center my-3">
@@ -387,4 +373,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default EditData;
