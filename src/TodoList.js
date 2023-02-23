@@ -38,8 +38,6 @@ const TodoList = () => {
 
             setInputData('');
 
-            
-
             setIsEditItem(null);
         } else {
             const allInputData = { id: new Date().getTime().toString(), name: inputData }
@@ -112,7 +110,7 @@ const TodoList = () => {
                         
                         {
                             toggleSubmit ? <button style={{backgroundColor:"#000",color:"#fff",borderRadius:"50%",width:"50px",height:"30px"}} onClick={addItem}><i className="fa fa-plus "  title="Add Item" ></i></button> :
-                                <button style={{backgroundColor:"#000",color:"#fff",borderRadius:"50%",width:"50px",height:"30px"}} onClick={addItem}><i className="fa fa-pencil" title="Update Item" onClick={addItem}></i></button>
+                                <button style={{backgroundColor:"#000",color:"#fff",borderRadius:"50%",width:"50px",height:"30px"}} onClick={addItem}><i className="fa fa-pencil" title="Update Item" ></i></button>
 
                         }
 
@@ -148,5 +146,3 @@ const TodoList = () => {
 }
 
 export default TodoList;
-
-

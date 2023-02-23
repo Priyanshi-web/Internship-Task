@@ -1,0 +1,7 @@
+.error {
+  border: 2px solid red;
+  padding-right: 30px;
+  /* background-image: url('https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.seekpng.com%2Fpng%2Fdetail%2F334-3345964_error-icon-download-attention-symbol.png&imgrefurl=https%3A%2F%2Fwww.seekpng.com%2Fipng%2Fu2e6a9y3o0e6r5a9_error-icon-download-attention-symbol%2F&tbnid=XQxnStQ99sMZuM&vet=12ahUKEwjy_OvRg6v9AhWeitgFHZC4D38QMygCegUIARDwAQ..i&docid=OzUJDs1gZS-bdM&w=820&h=809&q=error%20symbol&ved=2ahUKEwjy_OvRg6v9AhWeitgFHZC4D38QMygCegUIARDwAQ'); */
+  background-repeat: no-repeat;
+  background-position: right center;
+}

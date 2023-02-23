@@ -8,6 +8,7 @@ import Notfound from './Notfound';
 import Product from './Product';
 import Form from './Form';
 import Task from './Task';
+import Reactform from './Reactform';
 // import Usereducer from './Usereducer';
 
 
@@ -38,8 +39,9 @@ const App = () => {
         <Route path='/todo' element={<TodoList/>}></Route>
         <Route path='/form' element={<Form/>}></Route>
         <Route path='/task' element={<Task/>}>
-          {/* <Route path='usereducer' element={<Usereducer/>}></Route> */}
+          <Route path=':id' element={<Task/>}></Route>
         </Route>
+        <Route path='/reactform' element={<Reactform/>}></Route>
         {/* <Route path='/product/:id' element={<Prod />}></Route> */}
         <Route path='/*' element={<Notfound />}></Route>
       </Routes>

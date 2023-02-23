@@ -131,7 +131,7 @@ const About = () => {
     const err = validateRadioButton(selectedValue);
     setError(err);
 
-    setUserRegistration({ username: "", email: "", phone: "", password: "" });
+    setUserRegistration({ fname: "", lname: "", email: "", phone: "", add: "" });
     //setUserRegistration();
 
   }
