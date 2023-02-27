@@ -11,6 +11,7 @@ import Task from './component/Task';
 import Reactform from './component/useForm/Reactform';
 // import Usereducer from './Usereducer';
 import EditData from './component/Editdataform/Editdata';
+import FormHook from './Editform';
 
 
 const App = () => {
@@ -44,6 +45,8 @@ const App = () => {
         </Route>
         <Route path='/reactform' element={<Reactform/>}></Route>
         <Route path='/editdata' element={<EditData/>}></Route>
+        <Route path='/editform' element={<FormHook/>}></Route>
+        
         {/* <Route path='/product/:id' element={<Prod />}></Route> */}
         <Route path='/*' element={<Notfound />}></Route>
       </Routes>

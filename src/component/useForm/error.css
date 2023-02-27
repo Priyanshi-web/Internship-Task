@@ -5,3 +5,11 @@
   background-repeat: no-repeat;
   background-position: right center;
 }
+
+.error-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: red;
+}

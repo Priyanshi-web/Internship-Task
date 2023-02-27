@@ -16,6 +16,7 @@ const Task = () => {
             <div style={{ textAlign: "center" }}>
                 <Link to="/reactform">Reactform</Link><br />
                 <Link to="/editdata">Edit Form Data</Link><br />
+                <Link to="/editform">Edit Form</Link><br />
             </div>
             <Usereducer />
         </>
